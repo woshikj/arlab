@@ -4,8 +4,6 @@ var arToolkitSource, arToolkitContext;
 
 var markerRoot1;
 
-var mesh1;
-
 function init()
 {
     scene = new THREE.Scene();
@@ -85,7 +83,81 @@ function init()
 		type: 'pattern', patternUrl: "data/pattern-marker.patt",
 	})
 
-	let geometry1	= new THREE.CubeGeometry(1,1,1);
+	let loader = new THREE.FontLoader();
+	loader.load('fonts/Forte_Regular.json', function (font)
+	{
+		{
+			let geometry = new THREE.TextGeometry('SgIC Digital PlayLab',
+			{
+				font: font,
+				size: 0.2,
+				height: 0.1,
+				curveSegments:12
+			});
+			let material	= new THREE.MeshNormalMaterial({
+				transparent: true,
+				opacity: 1.0,
+				side: THREE.DoubleSide
+			}); 
+			
+			let mesh = new THREE.Mesh( geometry, material );
+			mesh.position.z = -0.5;
+			mesh.position.x = -1.25;
+			mesh.rotation.x = Math.PI * 0.5;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
+			
+			markerRoot1.add( mesh );
+		}
+		{
+			let geometry = new THREE.TextGeometry('Coming Soon!',
+			{
+				font: font,
+				size: 0.2,
+				height: 0.1,
+				curveSegments:12
+			});
+			let material	= new THREE.MeshNormalMaterial({
+				transparent: true,
+				opacity: 1.0,
+				side: THREE.DoubleSide
+			}); 
+			
+			let mesh = new THREE.Mesh( geometry, material );
+			mesh.position.z = 0;
+			mesh.position.x = -0.75;
+			mesh.rotation.x = Math.PI * 0.5;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
+			
+			markerRoot1.add( mesh );
+		}
+		{
+			let geometry = new THREE.TextGeometry('Level 2',
+			{
+				font: font,
+				size: 0.2,
+				height: 0.1,
+				curveSegments:12
+			});
+			let material	= new THREE.MeshNormalMaterial({
+				transparent: true,
+				opacity: 1.0,
+				side: THREE.DoubleSide
+			}); 
+			
+			let mesh = new THREE.Mesh( geometry, material );
+			mesh.position.z = 0.5;
+			mesh.position.x = -0.45;
+			mesh.rotation.x = Math.PI * 0.5;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
+			
+			markerRoot1.add( mesh );
+		}
+	});
+
+	/*let geometry1	= new THREE.CubeGeometry(1,1,1);
 	let material1	= new THREE.MeshNormalMaterial({
 		transparent: true,
 		opacity: 1.0,
@@ -94,8 +166,11 @@ function init()
 	
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.position.y = 0.5;
+	mesh1.scale.x = 0.5;
+	mesh1.scale.y = 0.5;
+	mesh1.scale.z = 0.5;
 	
-	markerRoot1.add( mesh1 );
+	markerRoot1.add( mesh1 );*/
 }
 
 function update()
