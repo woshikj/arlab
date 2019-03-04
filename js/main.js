@@ -6,20 +6,9 @@ var markerRoot1;
 
 var mesh1;
 
-Physijs.scripts.worker = 'js/physijs_worker.js';
-Physijs.scripts.ammo = 'js/ammo.js';
-
 function init()
 {
-	scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
-	scene.setGravity(new THREE.Vector3(0,-10,0));
-	scene.addEventListener(
-		'update',
-		function()
-		{
-			scene.simulate(undefined, 2);
-		}
-	);
+    scene = new THREE.Scene();
 
     let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
     scene.add(ambientLight);
