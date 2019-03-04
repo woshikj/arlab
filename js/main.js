@@ -82,7 +82,7 @@ function init()
 	markerRoot1 = new THREE.Group();
 	scene.add(markerRoot1);
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern', patternUrl: "data/qr.patt",
+		type: 'pattern', patternUrl: "data/hiro.patt",
 	})
 
 	let geometry1	= new THREE.CubeGeometry(1,1,1);
