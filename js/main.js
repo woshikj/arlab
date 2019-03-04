@@ -6,9 +6,20 @@ var markerRoot1;
 
 var mesh1;
 
+Physijs.scripts.worker = 'js/physijs_worker.js';
+Physijs.scripts.ammo = 'js/ammo.js';
+
 function init()
 {
-    scene = new THREE.Scene();
+	scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
+	scene.setGravity(new THREE.Vector3(0,-10,0));
+	scene.addEventListener(
+		'update',
+		function()
+		{
+			scene.simulate(undefined, 2);
+		}
+	);
 
     let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
     scene.add(ambientLight);
@@ -88,7 +99,7 @@ function init()
 	let geometry1	= new THREE.CubeGeometry(1,1,1);
 	let material1	= new THREE.MeshNormalMaterial({
 		transparent: true,
-		opacity: 0.5,
+		opacity: 1.0,
 		side: THREE.DoubleSide
 	}); 
 	
