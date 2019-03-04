@@ -87,11 +87,11 @@ function init()
 	loader.load('fonts/Forte_Regular.json', function (font)
 	{
 		{
-			let geometry = new THREE.TextGeometry('SgIC Digital PlayLab',
+			let geometry = new THREE.TextGeometry('Digital PlayLab',
 			{
 				font: font,
-				size: 0.2,
-				height: 0.1,
+				size: 0.5,
+				height: 0.3,
 				curveSegments:12
 			});
 			let material	= new THREE.MeshNormalMaterial({
@@ -101,8 +101,8 @@ function init()
 			}); 
 			
 			let mesh = new THREE.Mesh( geometry, material );
-			mesh.position.z = -0.5;
-			mesh.position.x = -1.25;
+			mesh.position.z = -1.0;
+			mesh.position.x = -2.0;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
@@ -113,8 +113,8 @@ function init()
 			let geometry = new THREE.TextGeometry('Coming Soon!',
 			{
 				font: font,
-				size: 0.2,
-				height: 0.1,
+				size: 0.5,
+				height: 0.3,
 				curveSegments:12
 			});
 			let material	= new THREE.MeshNormalMaterial({
@@ -125,7 +125,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 0;
-			mesh.position.x = -0.75;
+			mesh.position.x = -1.65;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
@@ -133,11 +133,11 @@ function init()
 			markerRoot1.add( mesh );
 		}
 		{
-			let geometry = new THREE.TextGeometry('Level 2',
+			let geometry = new THREE.TextGeometry('SgIC Level 2',
 			{
 				font: font,
-				size: 0.2,
-				height: 0.1,
+				size: 0.5,
+				height: 0.3,
 				curveSegments:12
 			});
 			let material	= new THREE.MeshNormalMaterial({
@@ -147,8 +147,8 @@ function init()
 			}); 
 			
 			let mesh = new THREE.Mesh( geometry, material );
-			mesh.position.z = 0.5;
-			mesh.position.x = -0.45;
+			mesh.position.z = 1;
+			mesh.position.x = -1.65;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
