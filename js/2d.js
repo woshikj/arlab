@@ -45,8 +45,6 @@ function init2D()
         options: {
             //width: 800,//window.innerWidth,
             //height: 600,//window.innerHeight,
-            width: window.innerHeight,
-            height: window.innerWidth,
             background: '#ffffff',
             showAngleIndicator: false,
             wireframes: false
@@ -64,12 +62,17 @@ function init2D()
         };
     
     world.bodies = [];
+    
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+    var halfWidth = winWidth * 0.5;
+    var halfHeight = winHeight * 0.5;
 
     World.add(world,[
-        Bodies.rectangle(400, -offset, 800.5 + 2 * offset, 50.5, options),
-        Bodies.rectangle(400, 600 + offset, 800.5 + 2 * offset, 50.5, options),
-        Bodies.rectangle(800 + offset, 300, 50.5, 600.5 + 2 * offset, options),
-        Bodies.rectangle(-offset, 300, 50.5, 600.5 + 2 * offset, options)
+        Bodies.rectangle(halfWidth, -offset, winWidth + 0.5 + 2 * offset, 50.5, options),
+        Bodies.rectangle(halfWidth, 600 + offset, winWidth + 0.5 + 2 * offset, 50.5, options),
+        Bodies.rectangle(800 + offset, halfHeight, 50.5, winHeight + 0.5 + 2 * offset, options),
+        Bodies.rectangle(-offset, halfHeight, 50.5, winHeight + 0.5 + 2 * offset, options)
     ]);
 
     var stack = Composites.stack(20, 20, 10, 4, 0, 0, function(x, y) {
