@@ -339,7 +339,7 @@ function init()
 		scanText.style.fontFamily = 'calibri';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '7vw';
-		scanText.innerHTML = "<center><img src=\"img/scan_qr.png\"/><br/>Scan QR Code</center>";
+		scanText.innerHTML = "<center><img src=\"img/scan_qr.png\" style=\"width:40%;\"/><br/>Scan QR Code</center>";
 
 		document.body.appendChild(scanText);
 		/*{
