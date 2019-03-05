@@ -237,7 +237,7 @@ function init()
 			let geometry = new THREE.TextGeometry('X Reality Lab',
 			{
 				font: font,
-				size: 0.5,
+				size: 0.3,
 				height: 0.2,
 				curveSegments:12
 			});
@@ -254,7 +254,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = -1.15;
-			mesh.position.x = -3;
+			mesh.position.x = -1;
 			mesh.rotation.x = Math.PI * 0.25;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
