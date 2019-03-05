@@ -103,7 +103,7 @@ function init2D()
         }
     });
 
-    let title = Bodies.rectangle(halfWidth, halfHeight, 512, 256, {
+    let title = Bodies.rectangle(halfWidth, halfHeight, 128, 64, {
         render: {
             strokeStyle: '#ffffff',
             sprite: {
