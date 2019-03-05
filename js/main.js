@@ -331,15 +331,15 @@ function init()
 		
 
 		scanText = document.createElement('div');
-		scanText.style.top = '30%';
-		scanText.style.left = '2%';
+		scanText.style.top = '80%';
+		scanText.style.left = '30%';
 		scanText.style.position = 'absolute';
-		scanText.style.width = '98%';
-		scanText.style.height = '70%';
+		scanText.style.width = '70%';
+		scanText.style.height = '20%';
 		scanText.style.fontFamily = 'calibri';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '7vw';
-		scanText.innerHTML = "<center><img src=\"img/scan_qr.png\" style=\"width:40%;\"/><br/>Scan QR Code</center>";
+		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Scan QR Code";
 
 		document.body.appendChild(scanText);
 		/*{
