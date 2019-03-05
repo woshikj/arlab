@@ -232,7 +232,7 @@ function init()
 	});
 
 	let loader = new THREE.FontLoader();
-	loader.load('fonts/Montserrat_Regular.json', function (font)
+	loader.load('fonts/Montserrat_Bold.json', function (font)
 	{
 		textGroup = new THREE.Group();
 		{
