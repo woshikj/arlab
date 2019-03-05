@@ -11,6 +11,7 @@ var hasTapped = false;
 
 var scanText = null;
 var addedScanText = true;
+var scanTextTimeout = null;
 
 var shapeList = [];
 
@@ -95,7 +96,7 @@ function init()
 {
     scene = new THREE.Scene();
 
-    let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+    let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 	scene.add(ambientLight);
 	
 	var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
@@ -188,20 +189,21 @@ function init()
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
 		type: 'pattern', patternUrl: "data/pattern-marker.patt",
 	});
-	
-	markerControls1.addEventListener('markerLost', function()
-	{
-		if(!addedScanText)
-			scene.add(scanText);
-		addedScanText = true;
-	});
 
 	markerControls1.addEventListener('markerFound', function()
 	{
 		if(!textAppeared)
 		{
 			textAppeared = true;
-			scene.remove(scanText);
+			if(scanText)
+			{
+				scanTextTimeout = setTimeout(function()
+				{
+					scanTextTimeout = null;
+					scanText.innerHTML = 'Tap to continue';
+				},2000);
+				scanText.innerHTML = '';
+			}
 			addedScanText = false;
 			for(var i = 0; i < textList.length; ++i)
 			{
@@ -327,7 +329,20 @@ function init()
 			markerRoot1.add( mesh );
 		}
 		
-		{
+
+		scanText = document.createElement('div');
+		scanText.style.top = '30%';
+		scanText.style.left = '2%';
+		scanText.style.position = 'absolute';
+		scanText.style.width = '98%';
+		scanText.style.height = '70%';
+		scanText.style.fontFamily = 'calibri';
+		scanText.style.color = '#ffffff';
+		scanText.style.fontSize = '7vw';
+		scanText.innerHTML = "<center><img src=\"img/scan_qr.png\"/><br/>Scan QR Code</center>";
+
+		document.body.appendChild(scanText);
+		/*{
 			let geometry = new THREE.TextGeometry('Scan QR Code',
 			{
 				font: font,
@@ -335,11 +350,6 @@ function init()
 				height: 0.1,
 				curveSegments:12
 			});
-			/*let material	= new THREE.MeshNormalMaterial({
-				transparent: true,
-				opacity: 1.0,
-				side: THREE.DoubleSide
-			}); */
 			let material = new THREE.MeshStandardMaterial({
 				color: 0xffffff,
 				roughness: 0.0,
@@ -351,7 +361,7 @@ function init()
 			mesh.position.x = -0.75;
 			scanText = mesh;
 			scene.add( mesh );
-		}
+		}*/
 	});
 
 	document.ontouchstart = function()
@@ -390,6 +400,17 @@ function update()
 		shapeList[i].position.y = shapeList[i].position.y + shapeList[i].velocity.y * 0.5;
 		shapeList[i].position.z = shapeList[i].position.z + shapeList[i].velocity.z * 0.5;
 		shapeList[i].velocity.y -= 0.981 * 0.1;
+	}
+	
+	if(markerRoot1 && !markerRoot1.visible)
+	{
+		if(!addedScanText)
+			scanText.innerHTML = 'Scan QR Code';
+		if(scanTextTimeout)
+			clearTimeout(scanTextTimeout);
+		scanTextTimeout = null;
+		addedScanText = true;
+		textAppeared = false;
 	}
 }
 
