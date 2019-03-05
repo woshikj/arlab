@@ -253,7 +253,7 @@ function init()
 			});
 			
 			let mesh = new THREE.Mesh( geometry, material );
-			mesh.position.z = -1.35;
+			mesh.position.z = -1.0;
 			mesh.position.x = -1.5;
 			mesh.rotation.x = Math.PI * 0.25;
 			mesh.rotation.y = Math.PI;
