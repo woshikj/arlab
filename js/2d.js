@@ -19,7 +19,12 @@ function init2D()
 					fader.style.opacity = opacity.value;
 				})
 				.start();
-	}
+    }
+    
+    var intv = setInterval(function()
+    {
+        TWEEN.update();
+    },0);
 
     var Engine = Matter.Engine,
         Render = Matter.Render,
@@ -38,8 +43,8 @@ function init2D()
         element: document.body,
         engine: engine,
         options: {
-            width: 800,
-            height: 600,
+            width: window.innerWidth,
+            height: window.innerHeight,
             background: '#ffffff',
             showAngleIndicator: false,
             wireframes: false
@@ -133,10 +138,6 @@ function init2D()
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: 800, y: 600 }
+        max: { x: window.innerWidth, y: window.innerHeight }
     });
-    
-
-    render.canvas.width = document.documentElement.clientWidth;
-    render.canvas.height = document.documentElement.clientHeight;
 }

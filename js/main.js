@@ -7,6 +7,7 @@ var fader;
 
 var textList = [];
 var textAppeared = false;
+var hasTapped = false;
 
 var shapeList = [];
 
@@ -317,7 +318,9 @@ function init()
 	{
 		if(textAppeared)
 		{
-			SpawnShape(true);
+			if(!hasTapped)
+				SpawnShape(true);
+			hasTapped = true;
 		}
 	}
 }
