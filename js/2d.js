@@ -103,7 +103,17 @@ function init2D()
         }
     });
 
+    let title = Bodies.rectangle(halfWidth, halfHeight, 512, 256, {
+        render: {
+            strokeStyle: '#ffffff',
+            sprite: {
+                texture: './img/title.png'
+            }
+        }
+    })
+
     World.add(world, stack);
+    World.add(world, title);
 
     var updateGravity = function(event) {
         var orientation = typeof window.orientation !== 'undefined' ? window.orientation : 0,
