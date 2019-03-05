@@ -9,6 +9,9 @@ var textList = [];
 var textAppeared = false;
 var hasTapped = false;
 
+var scanText = null;
+var addedScanText = true;
+
 var shapeList = [];
 
 function SpawnShape(gotoCam)
@@ -95,7 +98,7 @@ function init()
     let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
 	scene.add(ambientLight);
 	
-	var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+	var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
 	scene.add( directionalLight );
 
     camera = new THREE.Camera();
@@ -185,12 +188,21 @@ function init()
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
 		type: 'pattern', patternUrl: "data/pattern-marker.patt",
 	});
+	
+	markerControls1.addEventListener('markerLost', function()
+	{
+		if(!addedScanText)
+			scene.add(scanText);
+		addedScanText = true;
+	});
 
 	markerControls1.addEventListener('markerFound', function()
 	{
 		if(!textAppeared)
 		{
 			textAppeared = true;
+			scene.remove(scanText);
+			addedScanText = false;
 			for(var i = 0; i < textList.length; ++i)
 			{
 				(function(id)
@@ -240,7 +252,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = -1.15;
-			mesh.position.x = -2.5;
+			mesh.position.x = -5;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
@@ -275,7 +287,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 0;
-			mesh.position.x = -1.85;
+			mesh.position.x = -3;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
@@ -305,7 +317,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 1;
-			mesh.position.x = -1.85;
+			mesh.position.x = -3;
 			mesh.rotation.x = Math.PI * 0.5;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
@@ -313,6 +325,32 @@ function init()
 			textList.push(mesh);
 			
 			markerRoot1.add( mesh );
+		}
+		
+		{
+			let geometry = new THREE.TextGeometry('Scan QR Code',
+			{
+				font: font,
+				size: 0.1,
+				height: 0.1,
+				curveSegments:12
+			});
+			/*let material	= new THREE.MeshNormalMaterial({
+				transparent: true,
+				opacity: 1.0,
+				side: THREE.DoubleSide
+			}); */
+			let material = new THREE.MeshStandardMaterial({
+				color: 0xffffff,
+				roughness: 0.0,
+				metalness: 0.0
+			});
+			
+			let mesh = new THREE.Mesh( geometry, material );
+			mesh.position.z = -5;
+			mesh.position.x = -0.75;
+			scanText = mesh;
+			scene.add( mesh );
 		}
 	});
 
@@ -376,6 +414,6 @@ function animate()
 	TWEEN.update();
 }
 
-//init();
-//animate();
-init2D();
+init();
+animate();
+//init2D();
