@@ -376,5 +376,6 @@ function animate()
 	TWEEN.update();
 }
 
-init();
-animate();
+//init();
+//animate();
+init2D();

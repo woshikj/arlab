@@ -39,12 +39,17 @@ function init2D()
     var engine = Engine.create();
     var world = engine.world;
 
+    var winWidth = document.documentElement.clientWidth;
+    var winHeight = document.documentElement.clientHeight;
+
     var render = Render.create({
         element: document.body,
         engine: engine,
         options: {
             //width: 800,//window.innerWidth,
             //height: 600,//window.innerHeight,
+            width: winWidth,
+            height: winHeight,
             background: '#ffffff',
             showAngleIndicator: false,
             wireframes: false
@@ -63,8 +68,6 @@ function init2D()
     
     world.bodies = [];
     
-    var winWidth = document.documentElement.clientWidth;
-    var winHeight = document.documentElement.clientHeight;
     var halfWidth = winWidth * 0.5;
     var halfHeight = winHeight * 0.5;
 
@@ -143,9 +146,11 @@ function init2D()
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: document.documentElement.clientWidth, y: document.documentElement.clientHeight }
+        max: { x: winWidth, y: winHeight }
     });
 
     render.canvas.width = winWidth;
     render.canvas.height = winHeight;
+
+    console.log(winWidth + ' | ' + winHeight);
 }
