@@ -255,9 +255,9 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = -1.0;
 			mesh.position.x = -1.5;
-			//mesh.rotation.x = Math.PI * 0.25;
-			//mesh.rotation.y = Math.PI;
-			//mesh.rotation.z = Math.PI;
+			mesh.rotation.x = Math.PI * 0.25;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
 			mesh.scale.x = 0;
 			mesh.scale.y = 0;
 			mesh.scale.z = 0;
@@ -290,9 +290,9 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 0;
 			mesh.position.x = -1.35;
-			//mesh.rotation.x = Math.PI * 0.25;
-			//mesh.rotation.y = Math.PI;
-			//mesh.rotation.z = Math.PI;
+			mesh.rotation.x = Math.PI * 0.25;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
 
 			textList.push(mesh);
 			
@@ -320,9 +320,9 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 1;
 			mesh.position.x = -1.35;
-			//mesh.rotation.x = Math.PI * 0.25;
-			//mesh.rotation.y = Math.PI;
-			//mesh.rotation.z = Math.PI;
+			mesh.rotation.x = Math.PI * 0.25;
+			mesh.rotation.y = Math.PI;
+			mesh.rotation.z = Math.PI;
 
 			textList.push(mesh);
 			
@@ -380,11 +380,6 @@ function update()
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
 		arToolkitContext.update( arToolkitSource.domElement );
-
-	for(var i = 0; i < textList.length; ++i)
-	{
-		textList[i].lookAt( camera.position );
-	}
 
 	for(var i = 0; i < shapeList.length; ++i)
 	{
