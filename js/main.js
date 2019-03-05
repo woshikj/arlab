@@ -231,7 +231,7 @@ function init()
 	});
 
 	let loader = new THREE.FontLoader();
-	loader.load('fonts/Alien Robot_Regular.json', function (font)
+	loader.load('fonts/Montserrat_Regular.json', function (font)
 	{
 		{
 			let geometry = new THREE.TextGeometry('X Reality Lab',
