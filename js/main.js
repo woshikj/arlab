@@ -289,7 +289,7 @@ function init()
 			
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 0;
-			mesh.position.x = -3;
+			mesh.position.x = 0.5;
 			mesh.rotation.x = Math.PI * 0.25;
 			mesh.rotation.y = Math.PI;
 			mesh.rotation.z = Math.PI;
