@@ -45,6 +45,8 @@ function init2D()
         options: {
             //width: 800,//window.innerWidth,
             //height: 600,//window.innerHeight,
+            width: window.innerHeight,
+            height: window.innerWidth,
             background: '#ffffff',
             showAngleIndicator: false,
             wireframes: false
