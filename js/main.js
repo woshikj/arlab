@@ -3,6 +3,7 @@ var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
 
 var markerRoot1;
+var fader;
 
 var textList = [];
 var textAppeared = false;
@@ -31,6 +32,57 @@ function SpawnShape(gotoCam)
 	mesh.gotoCam = (gotoCam != null);
 	shapeList.push(mesh);
 	scene.add(mesh);
+
+	if(gotoCam)
+	{
+		var scale = {x:1,y:1,z:1};
+		new TWEEN.Tween(scale)
+		.to({x:2.0, y:2.0, z:2.0}, 2000)
+		.easing(TWEEN.Easing.Elastic.Out)
+		.onUpdate(function()
+		{
+			mesh.scale.x = scale.x;
+			mesh.scale.y = scale.y;
+			mesh.scale.z = scale.z;
+		})
+		.start();
+
+		var pos = {x:mesh.position.x,y:mesh.position.y,z:mesh.position.z};
+		new TWEEN.Tween(pos)
+		.to({x:camera.position.x,y:camera.position.y,z:camera.position.z}, 1000)
+		.onUpdate(function()
+		{
+			mesh.position.x = pos.x;
+			mesh.position.y = pos.y;
+			mesh.position.z = pos.z;
+		})
+		.start();
+
+		{
+			var opacity = {value:0.0};
+			new TWEEN.Tween(opacity)
+					.to({value:1.0},500)
+					.delay(400)
+					.onUpdate(function()
+					{
+						fader.style.opacity = opacity.value;
+					})
+					.onComplete(function()
+					{
+						cancelAnimationFrame(animate);
+						renderer.domElement.addEventListener('dblclick', null, false);
+						
+						markerControls1 = null;
+						renderer = null;
+						scene = null;
+						projector = null;
+						camera = null;
+						
+						init2D();
+					})
+					.start();
+		}
+	}
 }
 
 function init()
@@ -57,6 +109,22 @@ function init()
 	renderer.domElement.style.top = '0px'
 	renderer.domElement.style.left = '0px'
 	document.body.appendChild( renderer.domElement );
+
+	fader = document.createElement('div');
+	fader.id = 'ui-fader';
+	document.body.appendChild(fader);
+
+	{
+		var opacity = {value:1.0};
+		new TWEEN.Tween(opacity)
+				.to({value:0.0},1000)
+				.delay(2000)
+				.onUpdate(function()
+				{
+					fader.style.opacity = opacity.value;
+				})
+				.start();
+	}
 
 	clock = new THREE.Clock();
 	deltaTime = 0;
@@ -245,20 +313,13 @@ function init()
 		}
 	});
 
-	/*let geometry1	= new THREE.CubeGeometry(1,1,1);
-	let material1	= new THREE.MeshNormalMaterial({
-		transparent: true,
-		opacity: 1.0,
-		side: THREE.DoubleSide
-	}); 
-	
-	mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.position.y = 0.5;
-	mesh1.scale.x = 0.5;
-	mesh1.scale.y = 0.5;
-	mesh1.scale.z = 0.5;
-	
-	markerRoot1.add( mesh1 );*/
+	document.ontouchstart = function()
+	{
+		if(textAppeared)
+		{
+			SpawnShape(true);
+		}
+	}
 }
 
 function update()
@@ -280,17 +341,6 @@ function update()
 		}
 		if(shapeList[i].gotoCam)
 		{
-			var dx = camera.position.x - shapeList[i].position.x;
-			var dy = camera.position.y - shapeList[i].position.y;
-			var dz = camera.position.z - shapeList[i].position.z;
-			var length = Math.sqrt(dx*dx + dy*dy + dz*dz);
-			dx /= length;
-			dy /= length;
-			dz /= length;
-
-			shapeList[i].position.x = shapeList[i].position.x + dx * 0.5;
-			shapeList[i].position.y = shapeList[i].position.y + dy * 0.5;
-			shapeList[i].position.z = shapeList[i].position.z + dz * 0.5;
 			continue;
 		}
 		shapeList[i].position.x = shapeList[i].position.x + shapeList[i].velocity.x * 0.5;
@@ -309,12 +359,16 @@ function render()
 
 function animate()
 {
+	if(!renderer)
+	{
+		return;
+	}
 	requestAnimationFrame(animate);
 	deltaTime = clock.getDelta();
 	totalTime += deltaTime;
 	update();
-	TWEEN.update();
 	render();
+	TWEEN.update();
 }
 
 init();

@@ -1,0 +1,142 @@
+
+
+function init2D()
+{
+    document.ontouchstart = null;
+    document.body.innerHTML = '';
+
+    fader = document.createElement('div');
+    fader.id = 'ui-fader';
+    document.body.appendChild(fader);
+
+    {
+		var opacity = {value:1.0};
+		new TWEEN.Tween(opacity)
+				.to({value:0.0},1000)
+				.delay(2000)
+				.onUpdate(function()
+				{
+					fader.style.opacity = opacity.value;
+				})
+				.start();
+	}
+
+    var Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Composites = Matter.Composites,
+        Common = Matter.Common,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        World = Matter.World,
+        Bodies = Matter.Bodies;
+
+    var engine = Engine.create();
+    var world = engine.world;
+
+    var render = Render.create({
+        element: document.body,
+        engine: engine,
+        options: {
+            width: 800,
+            height: 600,
+            background: '#ffffff',
+            showAngleIndicator: false,
+            wireframes: false
+        }
+    });
+
+    Render.run(render);
+
+    var runner = Runner.create();
+    Runner.run(runner, engine);
+
+    var offset = 10,
+        options = {
+            isStatic: true
+        };
+    
+    world.bodies = [];
+
+    World.add(world,[
+        Bodies.rectangle(400, -offset, 800.5 + 2 * offset, 50.5, options),
+        Bodies.rectangle(400, 600 + offset, 800.5 + 2 * offset, 50.5, options),
+        Bodies.rectangle(800 + offset, 300, 50.5, 600.5 + 2 * offset, options),
+        Bodies.rectangle(-offset, 300, 50.5, 600.5 + 2 * offset, options)
+    ]);
+
+    var stack = Composites.stack(20, 20, 10, 4, 0, 0, function(x, y) {
+        if (Common.random() > 0.35) {
+            return Bodies.rectangle(x, y, 64, 64, {
+                render: {
+                    strokeStyle: '#ffffff',
+                    sprite: {
+                        texture: './img/box.png'
+                    }
+                }
+            });
+        } else {
+            return Bodies.circle(x, y, 46, {
+                density: 0.0005,
+                frictionAir: 0.06,
+                restitution: 0.3,
+                friction: 0.01,
+                render: {
+                    sprite: {
+                        texture: './img/ball.png'
+                    }
+                }
+            });
+        }
+    });
+
+    World.add(world, stack);
+
+    var updateGravity = function(event) {
+        var orientation = typeof window.orientation !== 'undefined' ? window.orientation : 0,
+            gravity = engine.world.gravity;
+
+        if (orientation === 0) {
+            gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+            gravity.y = Common.clamp(event.beta, -90, 90) / 90;
+        } else if (orientation === 180) {
+            gravity.x = Common.clamp(event.gamma, -90, 90) / 90;
+            gravity.y = Common.clamp(-event.beta, -90, 90) / 90;
+        } else if (orientation === 90) {
+            gravity.x = Common.clamp(event.beta, -90, 90) / 90;
+            gravity.y = Common.clamp(-event.gamma, -90, 90) / 90;
+        } else if (orientation === -90) {
+            gravity.x = Common.clamp(-event.beta, -90, 90) / 90;
+            gravity.y = Common.clamp(event.gamma, -90, 90) / 90;
+        }
+    };
+
+    window.addEventListener('deviceorientation', updateGravity);
+
+    // add mouse control
+    var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: {
+                    visible: false
+                }
+            }
+        });
+
+    World.add(world, mouseConstraint);
+
+    // keep the mouse in sync with rendering
+    render.mouse = mouse;
+
+    // fit the render viewport to the scene
+    Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: 800, y: 600 }
+    });
+    
+
+    render.canvas.width = document.documentElement.clientWidth;
+    render.canvas.height = document.documentElement.clientHeight;
+}
