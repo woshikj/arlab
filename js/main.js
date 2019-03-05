@@ -20,7 +20,7 @@ function SpawnShape(gotoCam)
 	let geometry = new THREE.SphereGeometry(Math.random() * 0.1 + 0.05, 32, 32);
 	
 	let material = new THREE.MeshStandardMaterial({
-		color: Math.random() * 0x555555 + 0xaaaaaa,
+		color: Math.random() < 0.5 ? 0xffffff : 0x00a3e0,
 		roughness: 0.5,
 		metalness: 0.5
 	});
@@ -247,8 +247,8 @@ function init()
 				side: THREE.DoubleSide
 			}); */
 			let material = new THREE.MeshStandardMaterial({
-				color: 0x42bff4,
-				roughness: 0.5,
+				color: 0x00a3e0,
+				roughness: 0.2,
 				metalness: 0.5
 			});
 			
@@ -283,7 +283,7 @@ function init()
 			}); */
 			let material = new THREE.MeshStandardMaterial({
 				color: 0xffffff,
-				roughness: 0.5,
+				roughness: 0.2,
 				metalness: 0.5
 			});
 			
@@ -312,8 +312,8 @@ function init()
 				side: THREE.DoubleSide
 			}); */
 			let material = new THREE.MeshStandardMaterial({
-				color: 0x42bff4,
-				roughness: 0.5,
+				color: 0x00a3e0,
+				roughness: 0.2,
 				metalness: 0.5
 			});
 			
