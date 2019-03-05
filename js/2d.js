@@ -84,19 +84,19 @@ function init2D()
                 render: {
                     strokeStyle: '#ffffff',
                     sprite: {
-                        texture: './img/box.png'
+                        texture: './img/box' + (Common.random() > 0.5 ? 0 : 1) + '.png'
                     }
                 }
             });
         } else {
-            return Bodies.circle(x, y, 46, {
+            return Bodies.circle(x, y, 36.8, {
                 density: 0.0005,
                 frictionAir: 0.06,
                 restitution: 0.3,
                 friction: 0.01,
                 render: {
                     sprite: {
-                        texture: './img/ball.png'
+                        texture: './img/ball' + (Common.random() > 0.5 ? 0 : 1) + '.png'
                     }
                 }
             });
