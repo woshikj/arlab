@@ -8,6 +8,7 @@ var fader;
 var textList = [];
 var textAppeared = false;
 var hasTapped = false;
+var textGroup = null;
 
 var scanText = null;
 var addedScanText = true;
@@ -233,6 +234,7 @@ function init()
 	let loader = new THREE.FontLoader();
 	loader.load('fonts/Montserrat_Regular.json', function (font)
 	{
+		textGroup = new THREE.Group();
 		{
 			let geometry = new THREE.TextGeometry('X Reality Lab',
 			{
@@ -255,9 +257,6 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = -1.0;
 			mesh.position.x = -1.5;
-			mesh.rotation.x = Math.PI * 0.25;
-			mesh.rotation.y = Math.PI;
-			mesh.rotation.z = Math.PI;
 			mesh.scale.x = 0;
 			mesh.scale.y = 0;
 			mesh.scale.z = 0;
@@ -266,7 +265,7 @@ function init()
 
 			textList.push(mesh);
 			
-			markerRoot1.add( mesh );
+			textGroup.add( mesh );
 		}
 		{
 			let geometry = new THREE.TextGeometry('Coming Soon!',
@@ -290,13 +289,10 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 0;
 			mesh.position.x = -1.35;
-			mesh.rotation.x = Math.PI * 0.25;
-			mesh.rotation.y = Math.PI;
-			mesh.rotation.z = Math.PI;
 
 			textList.push(mesh);
 			
-			markerRoot1.add( mesh );
+			textGroup.add( mesh );
 		}
 		{
 			let geometry = new THREE.TextGeometry('SgIC Level 2',
@@ -320,15 +316,12 @@ function init()
 			let mesh = new THREE.Mesh( geometry, material );
 			mesh.position.z = 1;
 			mesh.position.x = -1.35;
-			mesh.rotation.x = Math.PI * 0.25;
-			mesh.rotation.y = Math.PI;
-			mesh.rotation.z = Math.PI;
 
 			textList.push(mesh);
 			
-			markerRoot1.add( mesh );
+			textGroup.add( mesh );
 		}
-		
+		scene.add(textGroup);
 
 		scanText = document.createElement('div');
 		scanText.style.top = '80%';
@@ -342,26 +335,6 @@ function init()
 		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Scan QR Code";
 
 		document.body.appendChild(scanText);
-		/*{
-			let geometry = new THREE.TextGeometry('Scan QR Code',
-			{
-				font: font,
-				size: 0.1,
-				height: 0.1,
-				curveSegments:12
-			});
-			let material = new THREE.MeshStandardMaterial({
-				color: 0xffffff,
-				roughness: 0.0,
-				metalness: 0.0
-			});
-			
-			let mesh = new THREE.Mesh( geometry, material );
-			mesh.position.z = -5;
-			mesh.position.x = -0.75;
-			scanText = mesh;
-			scene.add( mesh );
-		}*/
 	});
 
 	document.ontouchstart = function()
@@ -380,6 +353,20 @@ function update()
 	// update artoolkit on every frame
 	if ( arToolkitSource.ready !== false )
 		arToolkitContext.update( arToolkitSource.domElement );
+	
+	textGroup.position.x = markerRoot1.position.x;
+	textGroup.position.y = markerRoot1.position.y;
+	textGroup.position.z = markerRoot1.position.z;
+	textGroup.scale.x = markerRoot1.scale.x;
+	textGroup.scale.y = markerRoot1.scale.y;
+	textGroup.scale.z = markerRoot1.scale.z;
+	
+	for(var i = 0; i < textList.length; ++i)
+	{
+		textList[i].position.x = 0.1 * (i%2 == 0 ? 1 : 0) - 1.5;
+		textList[i].position.y = 1 - i * 0.5 - 0.5;
+		textList[i].position.z = i * -0.25;
+	}
 
 	for(var i = 0; i < shapeList.length; ++i)
 	{
