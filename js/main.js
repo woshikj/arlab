@@ -237,8 +237,8 @@ function init()
 			let geometry = new THREE.TextGeometry('X Reality Lab',
 			{
 				font: font,
-				size: 0.75,
-				height: 0.3,
+				size: 0.5,
+				height: 0.2,
 				curveSegments:12
 			});
 			/*let material	= new THREE.MeshNormalMaterial({
@@ -272,8 +272,8 @@ function init()
 			let geometry = new THREE.TextGeometry('Coming Soon!',
 			{
 				font: font,
-				size: 0.5,
-				height: 0.3,
+				size: 0.3,
+				height: 0.2,
 				curveSegments:12
 			});
 			/*let material	= new THREE.MeshNormalMaterial({
@@ -302,8 +302,8 @@ function init()
 			let geometry = new THREE.TextGeometry('SgIC Level 2',
 			{
 				font: font,
-				size: 0.5,
-				height: 0.3,
+				size: 0.3,
+				height: 0.2,
 				curveSegments:12
 			});
 			/*let material	= new THREE.MeshNormalMaterial({
