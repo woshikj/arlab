@@ -70,8 +70,8 @@ function init2D()
 
     World.add(world,[
         Bodies.rectangle(halfWidth, -offset, winWidth + 0.5 + 2 * offset, 50.5, options),
-        Bodies.rectangle(halfWidth, 600 + offset, winWidth + 0.5 + 2 * offset, 50.5, options),
-        Bodies.rectangle(800 + offset, halfHeight, 50.5, winHeight + 0.5 + 2 * offset, options),
+        Bodies.rectangle(halfWidth, winHeight + offset, winWidth + 0.5 + 2 * offset, 50.5, options),
+        Bodies.rectangle(winWidth + offset, halfHeight, 50.5, winHeight + 0.5 + 2 * offset, options),
         Bodies.rectangle(-offset, halfHeight, 50.5, winHeight + 0.5 + 2 * offset, options)
     ]);
 
