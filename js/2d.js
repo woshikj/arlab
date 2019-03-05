@@ -63,8 +63,8 @@ function init2D()
     
     world.bodies = [];
     
-    var winWidth = window.innerWidth;
-    var winHeight = window.innerHeight;
+    var winWidth = document.documentElement.clientWidth;
+    var winHeight = document.documentElement.clientHeight;
     var halfWidth = winWidth * 0.5;
     var halfHeight = winHeight * 0.5;
 
@@ -143,7 +143,7 @@ function init2D()
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: window.innerHeight, y: window.innerWidth }
+        max: { x: document.documentElement.clientWidth, y: document.documentElement.clientHeight }
     });
 
     render.canvas.width = winWidth;
