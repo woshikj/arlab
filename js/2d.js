@@ -122,6 +122,7 @@ function init2D()
             gravity.x = Common.clamp(-event.beta, -90, 90) / 90;
             gravity.y = Common.clamp(event.gamma, -90, 90) / 90;
         }
+        gravity *= 3.0;
     };
 
     window.addEventListener('deviceorientation', updateGravity);
