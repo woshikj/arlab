@@ -145,4 +145,7 @@ function init2D()
         min: { x: 0, y: 0 },
         max: { x: window.innerHeight, y: window.innerWidth }
     });
+
+    render.canvas.width = winWidth;
+    render.canvas.height = winHeight;
 }
