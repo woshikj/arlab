@@ -360,6 +360,7 @@ function update()
 	textGroup.scale.x = markerRoot1.scale.x;
 	textGroup.scale.y = markerRoot1.scale.y;
 	textGroup.scale.z = markerRoot1.scale.z;
+	textGroup.visible = markerRoot1.visible;
 	
 	for(var i = 0; i < textList.length; ++i)
 	{
