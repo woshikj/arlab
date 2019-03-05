@@ -73,6 +73,8 @@ function SpawnShape(gotoCam)
 						cancelAnimationFrame(animate);
 						renderer.domElement.addEventListener('dblclick', null, false);
 						
+						renderer.dispose();
+
 						markerControls1 = null;
 						renderer = null;
 						scene = null;

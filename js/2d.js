@@ -138,6 +138,6 @@ function init2D()
     // fit the render viewport to the scene
     Render.lookAt(render, {
         min: { x: 0, y: 0 },
-        max: { x: 800, y: 600 }//window.innerWidth, y: window.innerHeight }
+        max: { x: window.innerWidth, y: window.innerHeight }
     });
 }
