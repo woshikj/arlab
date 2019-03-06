@@ -351,7 +351,7 @@ function update()
 		arToolkitContext.update( arToolkitSource.domElement );
 	
 	textGroup.position.x = markerRoot1.position.x;
-	textGroup.position.y = markerRoot1.position.y;
+	textGroup.position.y = markerRoot1.position.y - 0.25;
 	textGroup.position.z = markerRoot1.position.z;
 	textGroup.scale.x = markerRoot1.scale.x * 0.25;
 	textGroup.scale.y = markerRoot1.scale.y * 0.25;
