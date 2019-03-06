@@ -201,7 +201,7 @@ function init()
 				scanTextTimeout = setTimeout(function()
 				{
 					scanTextTimeout = null;
-					scanText.innerHTML = '<span style="left:30%;">Tap to continue</span>';
+					scanText.innerHTML = '<span style="left:50%;">Tap to continue</span>';
 				},2000);
 				scanText.innerHTML = '';
 			}
