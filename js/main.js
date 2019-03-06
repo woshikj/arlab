@@ -327,12 +327,12 @@ function init()
 		scanText.style.top = '80%';
 		scanText.style.left = '15%';
 		scanText.style.position = 'absolute';
-		scanText.style.width = '85%';
+		scanText.style.width = '100%';
 		scanText.style.height = '20%';
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '7vw';
-		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-5%;width:80%;\"/>Point Camera to QR Code";
+		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:5%;width:80%;\"/>Point Camera to QR Code";
 
 		document.body.appendChild(scanText);
 	});
