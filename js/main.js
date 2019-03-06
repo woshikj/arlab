@@ -201,7 +201,7 @@ function init()
 				scanTextTimeout = setTimeout(function()
 				{
 					scanTextTimeout = null;
-					scanText.innerHTML = 'Tap to continue';
+					scanText.innerHTML = '<span style="left:30%;">Tap to continue</span>';
 				},2000);
 				scanText.innerHTML = '';
 			}
@@ -393,7 +393,7 @@ function update()
 	if(markerRoot1 && !markerRoot1.visible)
 	{
 		if(!addedScanText)
-			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Point Camera to QR Code";
+			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-200%;left:0%;width:80%;\"/>Point Camera to QR Code";
 		if(scanTextTimeout)
 			clearTimeout(scanTextTimeout);
 		scanTextTimeout = null;
