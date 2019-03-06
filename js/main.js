@@ -353,9 +353,9 @@ function update()
 	textGroup.position.x = markerRoot1.position.x;
 	textGroup.position.y = markerRoot1.position.y;
 	textGroup.position.z = markerRoot1.position.z;
-	textGroup.scale.x = markerRoot1.scale.x * 0.5;
-	textGroup.scale.y = markerRoot1.scale.y * 0.5;
-	textGroup.scale.z = markerRoot1.scale.z * 0.5;
+	textGroup.scale.x = markerRoot1.scale.x * 0.25;
+	textGroup.scale.y = markerRoot1.scale.y * 0.25;
+	textGroup.scale.z = markerRoot1.scale.z * 0.25;
 	textGroup.visible = markerRoot1.visible;
 	
 	for(var i = 0; i < textList.length; ++i)
