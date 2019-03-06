@@ -332,7 +332,7 @@ function init()
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '6vw';
-		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:0%;width:80%;\"/>Point Camera to QR Code";
+		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-200%;left:0%;width:80%;\"/>Point Camera to QR Code";
 
 		document.body.appendChild(scanText);
 	});
