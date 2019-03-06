@@ -30,7 +30,7 @@ function SpawnShape(gotoCam)
 	mesh.position.x = markerRoot1.position.x + Math.random() * 0.5 - 0.25;
 	mesh.position.y = markerRoot1.position.y + Math.random() * 0.5 - 0.25;
 	mesh.position.z = markerRoot1.position.z;
-	mesh.velocity = {x:Math.random() * 2 - 1,y:Math.random() * 1.5 + 0.5,z:Math.random() * 0.9 + 0.1};
+	mesh.velocity = {x:Math.random() * 2 - 1,y:Math.random() * 2 + 0.5,z:Math.random() * 0.9 + 0.1};
 	var length = Math.sqrt(mesh.velocity.x * mesh.velocity.x + mesh.velocity.y * mesh.velocity.y + mesh.velocity.z * mesh.velocity.z);
 	mesh.velocity.x /= length;
 	mesh.velocity.y /= length;
