@@ -325,7 +325,7 @@ function init()
 
 		scanText = document.createElement('div');
 		scanText.style.top = '80%';
-		scanText.style.left = '15%';
+		scanText.style.left = '5%';
 		scanText.style.position = 'absolute';
 		scanText.style.width = '100%';
 		scanText.style.height = '20%';
