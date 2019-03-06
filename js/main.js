@@ -393,7 +393,7 @@ function update()
 	if(markerRoot1 && !markerRoot1.visible)
 	{
 		if(!addedScanText)
-			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-200%;left:0%;width:80%;\"/>Point Camera to QR Code";
+			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-280%;left:0%;width:80%;\"/>Point Camera to QR Code";
 		if(scanTextTimeout)
 			clearTimeout(scanTextTimeout);
 		scanTextTimeout = null;
