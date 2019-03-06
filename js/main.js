@@ -325,14 +325,14 @@ function init()
 
 		scanText = document.createElement('div');
 		scanText.style.top = '80%';
-		scanText.style.left = '25%';
+		scanText.style.left = '15%';
 		scanText.style.position = 'absolute';
-		scanText.style.width = '75%';
+		scanText.style.width = '85%';
 		scanText.style.height = '20%';
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '7vw';
-		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-5%;width:80%;\"/>Scan QR Code";
+		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-5%;width:80%;\"/>Point Camera to QR Code";
 
 		document.body.appendChild(scanText);
 	});
@@ -393,7 +393,7 @@ function update()
 	if(markerRoot1 && !markerRoot1.visible)
 	{
 		if(!addedScanText)
-			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Scan QR Code";
+			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Point Camera to QR Code";
 		if(scanTextTimeout)
 			clearTimeout(scanTextTimeout);
 		scanTextTimeout = null;
