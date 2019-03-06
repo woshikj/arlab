@@ -329,7 +329,7 @@ function init()
 		scanText.style.position = 'absolute';
 		scanText.style.width = '70%';
 		scanText.style.height = '20%';
-		scanText.style.fontFamily = 'calibri';
+		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '7vw';
 		scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-250%;left:-10%;width:80%;\"/>Scan QR Code";
