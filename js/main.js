@@ -423,6 +423,13 @@ function animate()
 	TWEEN.update();
 }
 
-init();
-animate();
-//init2D();
+var isWeChat = /micromessenger/i.test(navigator.userAgent);
+
+if(isWeChat)
+	init2D();
+else
+{
+	init();
+	animate();
+	//init2D();
+}
