@@ -325,9 +325,9 @@ function init()
 
 		scanText = document.createElement('div');
 		scanText.style.top = '80%';
-		scanText.style.left = '30%';
+		scanText.style.left = '25%';
 		scanText.style.position = 'absolute';
-		scanText.style.width = '70%';
+		scanText.style.width = '75%';
 		scanText.style.height = '20%';
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
