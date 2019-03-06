@@ -18,7 +18,7 @@ var shapeList = [];
 
 function SpawnShape(gotoCam)
 {
-	let geometry = new THREE.SphereGeometry(Math.random() * 0.1 + 0.05, 32, 32);
+	let geometry = new THREE.SphereGeometry(Math.random() * 0.05 + 0.025, 16, 16);
 	
 	let material = new THREE.MeshStandardMaterial({
 		color: Math.random() < 0.5 ? 0xffffff : 0x00a3e0,
@@ -380,9 +380,9 @@ function update()
 		{
 			continue;
 		}
-		shapeList[i].position.x = shapeList[i].position.x + shapeList[i].velocity.x * 0.5;
-		shapeList[i].position.y = shapeList[i].position.y + shapeList[i].velocity.y * 0.5;
-		shapeList[i].position.z = shapeList[i].position.z + shapeList[i].velocity.z * 0.5;
+		shapeList[i].position.x = shapeList[i].position.x + shapeList[i].velocity.x * 0.2;
+		shapeList[i].position.y = shapeList[i].position.y + shapeList[i].velocity.y * 0.2;
+		shapeList[i].position.z = shapeList[i].position.z + shapeList[i].velocity.z * 0.2;
 		shapeList[i].velocity.y -= 0.981 * 0.1;
 	}
 	
