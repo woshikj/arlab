@@ -389,7 +389,7 @@ function update()
 	if(markerRoot1 && !markerRoot1.visible)
 	{
 		if(!addedScanText)
-			scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:40%;left:-15%;width:80%;\"/>";
+			scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:50%;left:-15%;width:80%;\"/>";
 		if(scanTextTimeout)
 			clearTimeout(scanTextTimeout);
 		scanTextTimeout = null;
