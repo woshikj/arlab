@@ -320,15 +320,15 @@ function init()
 		scene.add(textGroup);
 
 		scanText = document.createElement('div');
-		scanText.style.top = '30%';
-		scanText.style.left = '20%';
+		scanText.style.top = '10%';
+		scanText.style.left = '25%';
 		scanText.style.position = 'absolute';
 		scanText.style.width = '100%';
 		scanText.style.height = '20%';
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
-		scanText.style.fontSize = '8vw';
-		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-230%;left:-10%;width:80%;\"/>";
+		scanText.style.fontSize = '10vw';
+		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-150%;left:-15%;width:80%;\"/>";
 
 		document.body.appendChild(scanText);
 	});
