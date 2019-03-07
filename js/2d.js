@@ -79,7 +79,7 @@ function init2D()
     ]);
 
     var stack = Composites.stack(20, 20, 10, 4, 0, 0, function(x, y) {
-        if (Common.random() > 0.35) {
+        //if (Common.random() > 0.35) {
             return Bodies.rectangle(x, halfHeight + y, 64, 64, {
                 render: {
                     strokeStyle: '#ffffff',
@@ -88,7 +88,7 @@ function init2D()
                     }
                 }
             });
-        } else {
+        /*} else {
             return Bodies.circle(x, y, 36.8, {
                 density: 0.0005,
                 frictionAir: 0.06,
@@ -100,7 +100,7 @@ function init2D()
                     }
                 }
             });
-        }
+        }*/
     });
 
     let title = Bodies.rectangle(halfWidth, halfHeight * 0.5, 256, 128, {
