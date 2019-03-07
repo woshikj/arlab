@@ -80,7 +80,7 @@ function init2D()
 
     var stack = Composites.stack(20, 20, 10, 4, 0, 0, function(x, y) {
         //if (Common.random() > 0.35) {
-            return Bodies.rectangle(x, halfHeight * 0.5 + y, 64, 64, {
+            return Bodies.rectangle(x, halfHeight * 0.25 + y, 64, 64, {
                 render: {
                     strokeStyle: '#ffffff',
                     sprite: {
