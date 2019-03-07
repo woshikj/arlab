@@ -380,9 +380,9 @@ function update()
 		{
 			continue;
 		}
-		shapeList[i].position.x = shapeList[i].position.x + shapeList[i].velocity.x * 0.2;
-		shapeList[i].position.y = shapeList[i].position.y + shapeList[i].velocity.y * 0.2;
-		shapeList[i].position.z = shapeList[i].position.z + shapeList[i].velocity.z * 0.2;
+		shapeList[i].position.x = shapeList[i].position.x + shapeList[i].velocity.x * 1;
+		shapeList[i].position.y = shapeList[i].position.y + shapeList[i].velocity.y * 1;
+		shapeList[i].position.z = shapeList[i].position.z + shapeList[i].velocity.z * 1;
 		shapeList[i].velocity.y -= 0.981 * 0.1;
 	}
 	
