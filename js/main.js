@@ -193,6 +193,7 @@ function init()
 
 	markerControls1.addEventListener('markerFound', function()
 	{
+		markerControls1.visible = true;
 		if(!textAppeared)
 		{
 			textAppeared = true;
