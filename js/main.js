@@ -328,7 +328,7 @@ function init()
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '10vw';
-		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-150%;left:-15%;width:80%;\"/>";
+		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-300%;left:-15%;width:80%;\"/>";
 
 		document.body.appendChild(scanText);
 	});
