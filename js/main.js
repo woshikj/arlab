@@ -328,7 +328,7 @@ function init()
 		scanText.style.fontFamily = 'mont';
 		scanText.style.color = '#ffffff';
 		scanText.style.fontSize = '10vw';
-		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:30%;left:-15%;width:80%;\"/>";
+		scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:40%;left:-15%;width:80%;\"/>";
 
 		document.body.appendChild(scanText);
 	});
@@ -389,7 +389,7 @@ function update()
 	if(markerRoot1 && !markerRoot1.visible)
 	{
 		if(!addedScanText)
-			scanText.innerHTML = "<img src=\"img/scan_qr.png\" style=\"position:absolute;top:-230%;left:-10%;width:80%;\"/>Scan This";
+			scanText.innerHTML = "Scan This<img src=\"img/scan_qr.png\" style=\"position:absolute;top:40%;left:-15%;width:80%;\"/>";
 		if(scanTextTimeout)
 			clearTimeout(scanTextTimeout);
 		scanTextTimeout = null;
